@@ -1,5 +1,5 @@
 {
-  "name": "healthcheck",
+  "name": "alive",
   "module": "index.ts",
   "type": "module",
   "private": true,

@@ -1,14 +1,19 @@
-const PORT = process.env.PORT || 3000;
+const port = Bun.argv[2] ? parseInt(Bun.argv[2]) : 3000;
 
 Bun.serve({
-  port: PORT,
+  port,
   fetch(req, server) {
-    const {address, port} = server.requestIP(req) ?? { address: 'unknown', port: 0 };
+    const requestIP = server.requestIP(req) ?? { address: 'unknown', port: 0 };
     const time = new Date().toISOString();
-    console.log(`${time} - ${address}:${port} - ${req.method} ${req.url}`);
+    console.log(`${time} - ${requestIP.address}:${requestIP.port} - ${req.method} ${req.url}`);
 
     return Response.json({ status: "ok" })
   },
 });
 
-console.log(`Server is running on http://localhost:${PORT}`);
+console.log(`Server is running on http://localhost:${port}`);
+
+process.on("SIGINT", () => {
+  console.log("Got SIGINT, shutting down...");
+  process.exit();
+});

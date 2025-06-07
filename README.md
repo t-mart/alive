@@ -20,7 +20,7 @@ docker pull tmmrtn/alive
 docker run -p 3000:3000 --rm tmmrtn/alive
 ```
 
-## Docker Hub
+## Docker Compose
 
 ```yaml
 services:

@@ -12,25 +12,8 @@ bun run start
 ## Docker
 
 ```bash
-docker build -t healthcheck .
-docker run -p 80:80 healthcheck
-```
-
-### Docker Hub
-
-```bash
 docker pull tmmrtn/healthcheck
-docker run -p 80:80 tmmrtn/healthcheck
-```
-
-## Docker Compose
-
-```yaml
-services:
-  healthcheck:
-    build: .
-    ports:
-      - "80:80"
+docker run -p 3000:3000 tmmrtn/healthcheck
 ```
 
 ### Docker Hub
@@ -40,5 +23,5 @@ services:
   healthcheck:
     image: tmmrtn/healthcheck
     ports:
-      - "80:80"
+      - "3000:3000"
 ```
